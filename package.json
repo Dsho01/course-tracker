@@ -1,0 +1,31 @@
+{
+  "name": "course-tracker",
+  "version": "1.0.0",
+  "description": "An app that uses the MEAN stack to allow the tracking of Udacity courses and allows others users see the progress.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dsho01/course-tracker.git"
+  },
+  "keywords": [
+    "udacity",
+    "mean",
+    "masonry",
+    "api"
+  ],
+  "author": "Dsho01",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Dsho01/course-tracker/issues"
+  },
+  "homepage": "https://github.com/Dsho01/course-tracker#readme",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "ejs": "^2.5.5",
+    "express": "^4.14.1",
+    "mongoose": "^4.8.0"
+  }
+}
