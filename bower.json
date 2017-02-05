@@ -1,9 +1,16 @@
 {
-	"name": "angular",
-	"version": "1.0.0",
-	"dependencies": {
-		"bootstrap": "latest",
-		"angular": "latest",
-		"angular-route": "latest"	
-	}
+  "name": "course-track",
+  "version": "1.0.0",
+  "dependencies": {
+    "bootstrap": "latest",
+    "angular": "latest",
+    "angular-route": "latest",
+    "font-awesome": "latest",
+    "angular-animate": "latest",
+    "angular-sanitize": "latest",
+    "masonry": "^4.1.1"
+  },
+  "devDependencies": {
+    "angular-bootstrap": "^2.5.0"
+  }
 }

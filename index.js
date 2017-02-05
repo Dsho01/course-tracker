@@ -4,7 +4,7 @@ var db = require('./config/db');
 var mongoose = require('mongoose');
 var app = express();
 
-app.use(express.static(__dirname + '/public/css'));
+app.use(express.static(__dirname + '/public/'));
 
 app.use('/', routes);
 
@@ -20,5 +20,7 @@ mongoose.connect(db.url, function(error) {
     if(error) {
         //Here so program does not crash
         console.log("Caught Error: Database connection has failed!");
+    } else {
+        console.log("Connection established to database!");
     }
 });
