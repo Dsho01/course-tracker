@@ -10,6 +10,7 @@ var courseSchema = new Schema({
     level: String,
     expected_duration: Number,
     expected_duration_unit: String,
+    keywords: [String],
     started: Boolean,
     percentage: Number
 });

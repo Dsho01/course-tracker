@@ -2,7 +2,13 @@ body {
     background-color: rgb(108,122,137);
 }
 
+#cardContent {
+    background-color: rgb(108,122,137);
+}
 
+div div md-content {
+    background-color: rgb(58,83,155);
+}
 /*
 .grid-item-content {
   height: 100px;
