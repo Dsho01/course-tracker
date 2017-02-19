@@ -2,20 +2,52 @@ body {
     background-color: rgb(108,122,137);
 }
 
+/** NavBar Styling **/
+#navBar {
+    background-color: transparent
+}
+
+.navItem {
+    color: white;
+}
+
+/** NavBar Styling **/
+
+/** MyCourses Page **/
 #cardContent {
     background-color: rgb(108,122,137);
 }
 
-div div md-content {
+#myCourses div div md-content {
     background-color: rgb(58,83,155);
 }
-/*
-.grid-item-content {
-  height: 100px;
-  background: #D26;
-  border: 2px solid hsla(0, 0%, 0%, 0.5);
-  border-radius: 5px;
+
+#myCourses #navBar {
+    background-color: rgb(58,83,155); /** Overrides color above **/
+}
+/** MyCourses Page **/
+
+/** Home Page **/
+#homeBackground {
+    height:100vh; 
+    background: #000 url('/img/home1.jpeg') center center;
+    background-size:cover;
+    overflow:hidden;
+}
+#homeBackground #filter{
+    height:100vh;
+    background-color: rgba(168, 235, 255, 0.6);
 }
 
-.grid-item-content--height2 { height: 200px; }
-*/
+#homeBackground h1 {
+    color: white;
+    text-align: center;
+}
+
+#homeBackground p {
+    color: white;
+    text-align: center;
+    margin-top: -25px;
+}
+
+/** Home Page **/

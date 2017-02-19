@@ -4,6 +4,7 @@ angular.module('CoursesCtrl', []).
         $scope.courseList = { };//Udacity courses
     
         //loads all courses when page is being loaded
+        // TODO: good idea to probably cache this too and only retrieve when an update is detected
         $http.get('api/courses').then(successCallback, errorCallback);
 
         function successCallback(response){

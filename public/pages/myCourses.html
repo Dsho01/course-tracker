@@ -1,187 +1,202 @@
-<div ng-cloak>
-      
-    <!-- Autocomplete for Keywords -->
-    <div flex="100" layout="column">
-        <md-content class="md-padding">
-            <form>
-                <md-autocomplete
-                    md-selected-item="selectedItem"
-                    md-search-text="searchText"
-                    md-autofocus="true"
-                    md-select-on-match="true"
-                    md-match-case-insensitive="true"
-                    md-items="item in keywordChips | filter: searchText"
-                    md-item-text="item"
-                    placeholder="Filter courses here....">
-                    <md-item-template>
-                        <span md-highlight-text="searchText">{{item}}</span>
-                    </md-item-template>
-                    <md-not-found>
-                        No matches found.
-                    </md-not-found>
-                </md-autocomplete>
-            </form>
+<div id="myCourses">
+    
+    <!-- TODO: Delete this navbar once todo is done for nav.ejs -->
+    <div ng-cloak ng-controller="NavBarController" ng-init="currentNavItem = 'jcourses'">
+        <md-content id="navBar" class="md-padding">
+            <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+                <md-nav-item md-nav-href="home" name="home"><span class="navItem">Home</span></md-nav-item>
+                <md-nav-item md-nav-href="#" name="jcourses">Jorge's Schedule</md-nav-item>
+                <md-nav-item md-nav-click="goto('#')" name="usercourses"><span class="navItem">Your Schedule</span></md-nav-item>
+            </md-nav-bar>
         </md-content>
     </div>
-    <!-- End of Autocomplete for Keywords -->
-    
-    <md-divider></md-divider>
+    <!-- Temporary code above -->
 
-    <!-- Course View -->
-    <md-content id="cardContent" class="md-padding" layout-xs="column" layout="row">
+    <div ng-cloak>
 
-        <!-- First Column -->
-        <div flex-xs flex-gt-xs="33" layout="column">
-            
-            <md-card ng-repeat="course in myCourses.data | filter: searchText" ng-if="$index % 3 === 0">
-                
-<!--                <img src="../img/udacity_logo.png" class="md-card-image" alt="Image not found...">-->
-                <img src="{{ course.image }}" class="md-card-image" alt="Image not found...">
-                
-                <md-card-title>
-                    <md-card-title-text>
-                        <span class="md-headline">{{ course.title }}</span>
-
-                        <span class="md-subhead">{{ course.subtitle }}</span>
-                        <md-divider></md-divider>
-                    </md-card-title-text>
-                </md-card-title>
-
-                <md-card-content>
-                    <p>
-                        {{ course.summary }}
-                    </p>
-
-                    <h4>
-                        Level: <span ng-repeat="level in getLevel(course.level) track by $index"><i class="fa fa-star fa-lg" aria-hidden="true"></i>&nbsp;</span>
-                    </h4>
-
-                    <h4>
-                        Duration: {{ course.expected_duration }} {{ course.expected_duration_unit }}
-                    </h4>
-
-                    <!-- Displays Progress Bar if course has been started -->
-                    <md-progress-linear ng-if="course.started === true" md-mode="determinate" value="{{ course.percentage }}"></md-progress-linear>
-                    
-                    <md-button ng-if="course.started === false" ng-disabled="true" class="md-raised md-primary">Course Not Started</md-button>
-                    
-                    
-                </md-card-content>
-                
-                <!-- Chips aka Tags (Optional) -->
-                <md-card-actions layout="row" layout-align="end center">
-                    
-                    <md-chips ng-model="course.keywords" readonly="true"></md-chips>
-
-                </md-card-actions>
-
-            </md-card>
-
+        <!-- Autocomplete for Keywords -->
+        <div flex="100" layout="column">
+            <md-content class="md-padding">
+                <form>
+                    <md-autocomplete
+                        md-selected-item="selectedItem"
+                        md-search-text="searchText"
+                        md-autofocus="true"
+                        md-select-on-match="true"
+                        md-match-case-insensitive="true"
+                        md-items="item in keywordChips | filter: searchText"
+                        md-item-text="item"
+                        placeholder="Filter courses here....">
+                        <md-item-template>
+                            <span md-highlight-text="searchText">{{item}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                            No matches found.
+                        </md-not-found>
+                    </md-autocomplete>
+                </form>
+            </md-content>
         </div>
-          <!-- End of First Column -->
+        <!-- End of Autocomplete for Keywords -->
 
-        <!-- Second Column -->
-        <div flex-xs flex-gt-xs="33" layout="column">
-            <md-card ng-repeat="course in myCourses.data | filter: searchText" ng-if="$index % 3 === 1">
-                
-<!--                <img src="../img/udacity_logo.png" class="md-card-image" alt="Image not found...">-->
-                <img src="{{ course.image }}" class="md-card-image" alt="Image not found...">
-                
-                <md-card-title>
-                    <md-card-title-text>
-                        <span class="md-headline">{{ course.title }}</span>
+        <md-divider></md-divider>
 
-                        <span class="md-subhead">{{ course.subtitle }}</span>
-                        <md-divider></md-divider>
-                    </md-card-title-text>
-                </md-card-title>
+        <!-- Course View -->
+        <md-content id="cardContent" class="md-padding" layout-xs="column" layout="row">
 
-                <md-card-content>
-                    <p>
-                        {{ course.summary }}
-                    </p>
+            <!-- First Column -->
+            <div flex-xs flex-gt-xs="33" layout="column">
 
-                    <h4>
-                        Level: <span ng-repeat="level in getLevel(course.level) track by $index"><i class="fa fa-star fa-lg" aria-hidden="true"></i>&nbsp;</span>
-                    </h4>
+                <md-card ng-repeat="course in myCourses.data | filter: searchText" ng-if="$index % 3 === 0">
 
-                    <h4>
-                        Duration: {{ course.expected_duration }} {{ course.expected_duration_unit }}
-                    </h4>
+                    <img src="{{ course.image }}" class="md-card-image" alt="Image not found...">
 
-                    <!-- Displays Progress Bar if course has been started -->
-                    <md-progress-linear ng-if="course.started === true" md-mode="determinate" value="{{ course.percentage }}"></md-progress-linear>
-                    
-                    <md-button ng-if="course.started === false" ng-disabled="true" class="md-raised md-primary">Course Not Started</md-button>
-                    
-                    
-                </md-card-content>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">{{ course.title }}</span>
 
-                <!-- Chips aka Tags (Optional) -->
-                <md-card-actions layout="row" layout-align="end center">
+                            <span class="md-subhead">{{ course.subtitle }}</span>
+                            <md-divider></md-divider>
+                        </md-card-title-text>
+                    </md-card-title>
 
-                    <md-chips ng-model="course.keywords" readonly="true"></md-chips>
+                    <md-card-content>
+                        <p>
+                            {{ course.summary }}
+                        </p>
 
-                </md-card-actions>
+                        <h4>
+                            Level: <span ng-repeat="level in getLevel(course.level) track by $index"><i class="fa fa-star fa-lg" aria-hidden="true"></i>&nbsp;</span>
+                        </h4>
 
-            </md-card>
-        </div>
-          <!-- End of Second Column -->
+                        <h4>
+                            Duration: {{ course.expected_duration }} {{ course.expected_duration_unit }}
+                        </h4>
+
+                        <!-- Displays Progress Bar if course has been started -->
+                        <md-progress-linear ng-if="course.started === true" md-mode="determinate" value="{{ course.percentage }}"></md-progress-linear>
+
+                        <md-button ng-if="course.started === false" ng-disabled="true" class="md-raised md-primary">Course Not Started</md-button>
 
 
+                    </md-card-content>
+
+                    <!-- Chips aka Tags (Optional) -->
+                    <md-card-actions layout="row" layout-align="end center">
+
+                        <md-chips ng-model="course.keywords" readonly="true"></md-chips>
+
+                    </md-card-actions>
+
+                </md-card>
+
+            </div>
+              <!-- End of First Column -->
+
+            <!-- Second Column -->
+            <div flex-xs flex-gt-xs="33" layout="column">
+                <md-card ng-repeat="course in myCourses.data | filter: searchText" ng-if="$index % 3 === 1">
+
+    <!--                <img src="../img/udacity_logo.png" class="md-card-image" alt="Image not found...">-->
+                    <img src="{{ course.image }}" class="md-card-image" alt="Image not found...">
+
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">{{ course.title }}</span>
+
+                            <span class="md-subhead">{{ course.subtitle }}</span>
+                            <md-divider></md-divider>
+                        </md-card-title-text>
+                    </md-card-title>
+
+                    <md-card-content>
+                        <p>
+                            {{ course.summary }}
+                        </p>
+
+                        <h4>
+                            Level: <span ng-repeat="level in getLevel(course.level) track by $index"><i class="fa fa-star fa-lg" aria-hidden="true"></i>&nbsp;</span>
+                        </h4>
+
+                        <h4>
+                            Duration: {{ course.expected_duration }} {{ course.expected_duration_unit }}
+                        </h4>
+
+                        <!-- Displays Progress Bar if course has been started -->
+                        <md-progress-linear ng-if="course.started === true" md-mode="determinate" value="{{ course.percentage }}"></md-progress-linear>
+
+                        <md-button ng-if="course.started === false" ng-disabled="true" class="md-raised md-primary">Course Not Started</md-button>
 
 
-        <!-- Third Column --> 
-        <div flex-xs flex-gt-xs="33" layout="column">
-            
-            <md-card ng-repeat="course in myCourses.data | filter: searchText" ng-if="$index % 3 === 2">
-                
-<!--                <img src="../img/udacity_logo.png" class="md-card-image" alt="Image not found...">-->
-                <img src="{{ course.image }}" class="md-card-image" alt="Image not found...">
-                
-                <md-card-title>
-                    <md-card-title-text>
-                        <span class="md-headline">{{ course.title }}</span>
+                    </md-card-content>
 
-                        <span class="md-subhead">{{ course.subtitle }}</span>
-                        <md-divider></md-divider>
-                    </md-card-title-text>
-                </md-card-title>
+                    <!-- Chips aka Tags (Optional) -->
+                    <md-card-actions layout="row" layout-align="end center">
 
-                <md-card-content>
-                    <p>
-                        {{ course.summary }}
-                    </p>
+                        <md-chips ng-model="course.keywords" readonly="true"></md-chips>
 
-                    <h4>
-                        Level: <span ng-repeat="level in getLevel(course.level) track by $index"><i class="fa fa-star fa-lg" aria-hidden="true"></i>&nbsp;</span>
-                    </h4>
+                    </md-card-actions>
 
-                    <h4>
-                        Duration: {{ course.expected_duration }} {{ course.expected_duration_unit }}
-                    </h4>
+                </md-card>
+            </div>
+              <!-- End of Second Column -->
 
-                    <!-- Displays Progress Bar if course has been started -->
-                    <md-progress-linear ng-if="course.started === true" md-mode="determinate" value="{{ course.percentage }}"></md-progress-linear>
-                    
-                    <md-button ng-if="course.started === false" ng-disabled="true" class="md-raised md-primary">Course Not Started</md-button>
-                    
-                    
-                </md-card-content>
 
-                <!-- Chips aka Tags (Optional) -->
-                <md-card-actions layout="row" layout-align="end center">
 
-                    <md-chips ng-model="course.keywords" readonly="true"></md-chips>
 
-                </md-card-actions>
+            <!-- Third Column --> 
+            <div flex-xs flex-gt-xs="33" layout="column">
 
-            </md-card>
+                <md-card ng-repeat="course in myCourses.data | filter: searchText" ng-if="$index % 3 === 2">
 
-        </div>
-        <!-- End of Third Row -->
-        
-    </md-content>
-    <!-- End of Course View -->
+    <!--                <img src="../img/udacity_logo.png" class="md-card-image" alt="Image not found...">-->
+                    <img src="{{ course.image }}" class="md-card-image" alt="Image not found...">
+
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">{{ course.title }}</span>
+
+                            <span class="md-subhead">{{ course.subtitle }}</span>
+                            <md-divider></md-divider>
+                        </md-card-title-text>
+                    </md-card-title>
+
+                    <md-card-content>
+                        <p>
+                            {{ course.summary }}
+                        </p>
+
+                        <h4>
+                            Level: <span ng-repeat="level in getLevel(course.level) track by $index"><i class="fa fa-star fa-lg" aria-hidden="true"></i>&nbsp;</span>
+                        </h4>
+
+                        <h4>
+                            Duration: {{ course.expected_duration }} {{ course.expected_duration_unit }}
+                        </h4>
+
+                        <!-- Displays Progress Bar if course has been started -->
+                        <md-progress-linear ng-if="course.started === true" md-mode="determinate" value="{{ course.percentage }}"></md-progress-linear>
+
+                        <md-button ng-if="course.started === false" ng-disabled="true" class="md-raised md-primary">Course Not Started</md-button>
+
+
+                    </md-card-content>
+
+                    <!-- Chips aka Tags (Optional) -->
+                    <md-card-actions layout="row" layout-align="end center">
+
+                        <md-chips ng-model="course.keywords" readonly="true"></md-chips>
+
+                    </md-card-actions>
+
+                </md-card>
+
+            </div>
+            <!-- End of Third Row -->
+
+        </md-content>
+        <!-- End of Course View -->
+
+    </div>
     
 </div>

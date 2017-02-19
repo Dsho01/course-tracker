@@ -1,0 +1,24 @@
+<div id="homeBackground" ng-cloak>
+    <div id="filter">
+        
+        <!-- TODO: Delete this navbar once todo is done for nav.ejs -->
+        <div ng-controller="NavBarController" ng-init="currentNavItem = 'home'">
+            <md-content id="navBar" class="md-padding">
+                <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" style="background-color:transparent">
+                    <md-nav-item md-nav-href="#" name="home">Home</md-nav-item>
+                    <md-nav-item md-nav-href="/" name="jcourses"><span class="navItem">Jorge's Schedule</span></md-nav-item>
+                    <md-nav-item md-nav-click="goto('#')" name="usercourses"><span class="navItem">Your Schedule</span></md-nav-item>
+                </md-nav-bar>
+            </md-content>
+        </div>
+        <!-- Temporary code above -->
+
+        <div  style="height:100%;font-size: 250%;" layout="column" layout-align="start center" layout-align-xs="start center">
+
+            <h1>Course-Tracker</h1>
+            <p>Course-Tracker allows you to track my courses. Tracking your own courses is still being developed. Everything here is just a demo!</p>
+
+        </div>
+    
+    </div>
+</div>

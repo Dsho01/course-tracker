@@ -90,7 +90,7 @@ router.get('/api/udacity', function(req, res) {
 });
 
 
-router.get('/', function (req, res) {
+router.get('/*', function (req, res) {
     //res.send('This is my coursework');
     res.render('pages/coursework');
 });
