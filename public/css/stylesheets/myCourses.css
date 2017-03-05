@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(108,122,137);
+    background-color: rgb(191,191,191);
 }
 
 /** NavBar Styling **/
@@ -11,19 +11,28 @@ body {
     color: white;
 }
 
+._md-nav-button-text {
+    color: rgb(232,126,4) !important;
+}
+
+md-nav-ink-bar {
+    color: rgb(232,126,4) !important;
+    background-color: rgb(232,126,4) !important;
+}
+
 /** NavBar Styling **/
 
 /** MyCourses Page **/
 #cardContent {
-    background-color: rgb(108,122,137);
+    background-color: rgb(191,191,191);
 }
 
 #myCourses div div md-content {
-    background-color: rgb(58,83,155);
+    background-color: rgba(107,185,240, 0.6);
 }
 
 #myCourses #navBar {
-    background-color: rgb(58,83,155); /** Overrides color above **/
+    background-color: rgba(107,185,240, 0.6); /** Overrides color above **/
 }
 /** MyCourses Page **/
 

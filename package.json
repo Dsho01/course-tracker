@@ -4,6 +4,8 @@
   "description": "An app that uses the MEAN stack to allow the tracking of Udacity courses and allows others users see the progress.",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "postinstall": "./node_modules/bower/bin/bower install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,6 +26,7 @@
   "homepage": "https://github.com/Dsho01/course-tracker#readme",
   "dependencies": {
     "body-parser": "^1.16.0",
+    "bower": "1.8.0",
     "ejs": "^2.5.5",
     "express": "^4.14.1",
     "https": "^1.0.0",
